@@ -8,9 +8,7 @@ import { data } from './data';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-	<div>
-		<CardList /> 
-	</div>,
+		<CardList data= {data}/>,
 	document.getElementById('root'));
 
 serviceWorker.unregister();
