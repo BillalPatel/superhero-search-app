@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import CardList from './CardList';
+import { data } from './data';
 
-function App() {
-  return (
-    
-  );
+const App = () => {
+	return (
+		<Fragment>
+			<CardList data= { data }/>
+		</Fragment>
+	);
 }
 
 export default App;

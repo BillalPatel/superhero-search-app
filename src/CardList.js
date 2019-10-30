@@ -2,9 +2,17 @@ import React from 'react';
 import Card from './Card';
 
 const CardList = ({ data }) => {
-	// const cards = {data.map(title => data.title)};
+	const cardComponent = data.map((el, i) =>
+		<Card 
+			key={ i } 
+			title={ data[i].title } 
+			content={ data[i].content }
+		/>
+	);
 	return (
-		<Card title={data[0].title} content={data[0].content}/>
+		<div>
+			{ cardComponent }
+		</div>
 	)
 }
 
