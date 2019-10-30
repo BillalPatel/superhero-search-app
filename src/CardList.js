@@ -9,6 +9,7 @@ const CardList = ({ data }) => {
 			content={ data[i].content }
 		/>
 	);
+	
 	return (
 		<div>
 			{ cardComponent }
