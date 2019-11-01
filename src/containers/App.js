@@ -14,20 +14,20 @@ class App extends Component {
 	}
 
 	componentDidMount() {
-		fetch('https://jsonplaceholder.typicode.com/posts')
-			.then(response => response.json())
-			.then(posts => this.setState({data: posts})
+		fetch('http://localhost:3000/results')
+			.then(res => res.json())
+			.then(heroes => {this.setState({ data: heroes})}
 		);
 	}
 
 	onSearch = (event) => {
-		this.setState({searchField: event.target.value})
+		this.setState({searchField: event.target.value});
 	}
 
 	render() {
 		const {data, searchField} = this.state;
-		const filteredResults = data.filter(dat => {
-			return dat.title.toLowerCase().includes(searchField.toLowerCase());
+		const filteredResults = data.filter(hero => {
+			return hero.name.toLowerCase().includes(searchField.toLowerCase());
 		})
 
 		return (

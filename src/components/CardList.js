@@ -5,8 +5,9 @@ const CardList = ({data}) => {
 	const cardComponent = data.map((el, i) =>
 		<Card 
 			key={i} 
-			title={data[i].title} 
-			content={data[i].body}
+			title={data[i].name}
+			image={data[i].image.url}
+			content={data[i].connections.relatives}
 		/>
 	);
 	
