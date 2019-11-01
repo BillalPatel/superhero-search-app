@@ -3,7 +3,6 @@ import './App.css';
 import Header from '../components/Header';
 import SearchBox from '../components/SearchBox'
 import CardList from '../components/CardList';
-// import {data} from './data';
 
 class App extends Component {
 	constructor() {
@@ -15,18 +14,27 @@ class App extends Component {
 	}
 
 	componentDidMount() {
-		fetch('https://jsonplaceholder.typicode.com/posts')
-			.then(response => response.json())
-			.then(users => this.setState({data: users})
+		fetch('http://localhost:3000/results')
+			.then(res => res.json())
+			.then(heroes => {this.setState({ data: heroes})}
 		);
 	}
 
+	onSearch = (event) => {
+		this.setState({searchField: event.target.value});
+	}
+
 	render() {
+		const {data, searchField} = this.state;
+		const filteredResults = data.filter(hero => {
+			return hero.name.toLowerCase().includes(searchField.toLowerCase());
+		})
+
 		return (
 			<Fragment>
 				<Header />
-				<SearchBox />
-				<CardList data={this.state.data}/>
+				<SearchBox searchChange={this.onSearch}/>
+				<CardList data={filteredResults}/>
 			</Fragment>
 		);
 	}
