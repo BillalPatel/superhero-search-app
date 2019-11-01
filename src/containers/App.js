@@ -1,4 +1,6 @@
 import React, { Component, Fragment } from 'react';
+import axios from 'axios';
+
 import './App.css';
 import Header from '../components/Header';
 import SearchBox from '../components/SearchBox'
@@ -13,11 +15,14 @@ class App extends Component {
 		};
 	}
 
+	// https://superheroapi.com/api/110622440374412/search/batman
+
 	componentDidMount() {
-		fetch('http://localhost:3000/results')
-			.then(res => res.json())
-			.then(heroes => {this.setState({ data: heroes})}
-		);
+		axios.get('http://localhost:3000/results')
+		.then(res => {
+			const data = res.data;
+			this.setState({data})
+		})
 	}
 
 	onSearch = (event) => {
