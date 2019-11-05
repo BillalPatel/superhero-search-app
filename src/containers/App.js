@@ -10,28 +10,41 @@ class App extends Component {
 	constructor() {
 		super();
 		this.state = {
-			someData: [],
-			searchField: ''
+			dataP: [],
+			searchField: 'batman'
 		};
 	}
 
-	// https://superheroapi.com/api/110622440374412/search/batman
-
 	componentDidMount() {
-		axios.get('https://superheroapi.com/api/10212892996840054/search/batman')
-		.then(res => {		
-			const someData = res.data.results;
-			this.setState({someData});
-		})
+		const {searchField} = this.state;
+
+		// axios.get(`https://superheroapi.com/api/10212892996840054/search/${searchField}`)
+		// .then(res => {		
+		// 	const someData = res.data.results;
+		// 	this.setState({
+		// 		dataP: someData
+		// 	});
+		// })
 	}
 
 	onSearch = (event) => {
-		this.setState({searchField: event.target.value});
+		const {searchField} = this.state;
+		this.setState({
+			searchField: event.target.value
+		});
+		axios.get(`https://superheroapi.com/api/10212892996840054/search/${searchField}`)
+			.then(res => {		
+				const someData = res.data.results;
+				this.setState({
+					dataP: someData
+				});
+			})
+
 	}
 
 	render() {
-		const {someData, searchField} = this.state;
-		const filteredResults = someData.filter(hero => {
+		const {dataP, searchField} = this.state;
+		const filteredResults = dataP.filter(hero => {
 			return hero.name.toLowerCase().includes(searchField.toLowerCase());
 		})
 
