@@ -10,16 +10,20 @@ class App extends Component {
 	constructor() {
 		super();
 		this.state = {
-			someData: [],
-			searchField: ''
+			dataP: [],
+			searchField: 'batman'
 		};
 	}
 
 	componentDidMount() {
-		axios.get('https://superheroapi.com/api/10212892996840054/search/batman')
+		// return <h1>Type a search</h1>
+		// axios.get('https://superheroapi.com/api/10212892996840054/search/batman')
+		const {searchField} = this.state;
+		axios.get('https://superheroapi.com/api/10212892996840054/search/' + searchField)
+		// axios.get('https://superheroapi.com/api/10212892996840054/search/batman')
 		.then(res => {		
 			const someData = res.data.results;
-			this.setState({someData});
+			this.setState({dataP: someData});
 		})
 	}
 
@@ -28,9 +32,10 @@ class App extends Component {
 	}
 
 	render() {
-		const {someData, searchField} = this.state;
-		const filteredResults = someData.filter(hero => {
+		const {dataP, searchField} = this.state;
+		const filteredResults = dataP.filter(hero => {
 			return hero.name.toLowerCase().includes(searchField.toLowerCase());
+			// return hero.name.toLowerCase().includes('Batman');
 		})
 
 		return (
