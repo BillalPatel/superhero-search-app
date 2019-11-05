@@ -15,8 +15,6 @@ class App extends Component {
 		};
 	}
 
-	// https://superheroapi.com/api/110622440374412/search/batman
-
 	componentDidMount() {
 		axios.get('https://superheroapi.com/api/10212892996840054/search/batman')
 		.then(res => {		
