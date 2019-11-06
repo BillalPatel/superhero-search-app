@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Card = ({title, image, fullName, placeOfBirth, content}) => {
+const Card = ({title, image, fullName, placeOfBirth, firstAppearance}) => {
 	var styles = {
 		width:'50%',
     	marginRight:'2%',
@@ -18,8 +18,8 @@ const Card = ({title, image, fullName, placeOfBirth, content}) => {
 					<h1 className='tc f3 bg-near-white br3 br--top black-60 mv0 pv2 ph3'>{title}</h1>
 					<img className='db tc' alt='Superhero' src={image} />
 					<p className='f6 f5-ns lh-copy measure'>{fullName}</p>
-					<p className='f6 f5-ns lh-copy measure'>{placeOfBirth}</p>
-					<p className='f6 f5-ns lh-copy measure'>{content}</p>
+					<p className='f6 f5-ns lh-copy measure'>Born: {placeOfBirth}</p>
+					<p className='f6 f5-ns lh-copy measure'>First Appearance: {firstAppearance}</p>
 				</div>
 			</div>
 		</div>

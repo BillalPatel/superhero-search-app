@@ -7,9 +7,9 @@ const CardList = ({data}) => {
 			key={i} 
 			title={data[i].name}
 			image={data[i].image.url}
-			fullName={data[i].biography["full-name"]}
-			placeOfBirth={data[i].biography["place-of-birth"]}
-			content={data[i].connections.relatives}
+			fullName={data[i].biography['full-name']}
+			placeOfBirth={data[i].biography['place-of-birth']}
+			firstAppearance={data[i].biography['first-appearance']}
 		/>
 	);
 	
