@@ -16,15 +16,7 @@ class App extends Component {
 	}
 
 	componentDidMount() {
-		const {searchField} = this.state;
-
-		// axios.get(`https://superheroapi.com/api/10212892996840054/search/${searchField}`)
-		// .then(res => {		
-		// 	const someData = res.data.results;
-		// 	this.setState({
-		// 		dataP: someData
-		// 	});
-		// })
+		
 	}
 
 	onSearch = (event) => {
