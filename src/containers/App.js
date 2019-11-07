@@ -11,7 +11,7 @@ class App extends Component {
 		super();
 		this.state = {
 			dataP: [],
-			searchField: 'batman'
+			searchField: ''
 		};
 	}
 
@@ -31,7 +31,6 @@ class App extends Component {
 					dataP: someData
 				});
 			})
-
 	}
 
 	render() {
