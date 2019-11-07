@@ -9,6 +9,7 @@ const CardList = ({data}) => {
 			image={data[i].image.url}
 			fullName={data[i].biography['full-name']}
 			placeOfBirth={data[i].biography['place-of-birth']}
+			universe={data[i].biography.publisher}
 			firstAppearance={data[i].biography['first-appearance']}
 		/>
 	);
