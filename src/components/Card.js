@@ -9,7 +9,7 @@ const Card = ({title, image, fullName, placeOfBirth, firstAppearance}) => {
             <div>
               <img className='db tc' alt='Superhero' src={image}/>
               <h5 className='f3 tc mt4 mb2 avenir f4'>{fullName}</h5>
-              <hr class="mw2 bb bw1 b--black-10"/>
+              <hr className="mw2 bb bw1 b--black-10"/>
           	  <div className='f6 dark-gray o-50 mb4 tc'>{placeOfBirth}</div>
           	<div>
           	  <p className='lh-copy measure center f6 black-70'>First Appearance: <br/>{firstAppearance}</p>
