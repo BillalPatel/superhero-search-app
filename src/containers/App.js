@@ -10,8 +10,8 @@ class App extends Component {
 	constructor() {
 		super();
 		this.state = {
-			dataP: [],
-			searchField: ''
+			resultsData: [],
+			searchField: 'Batman'
 		};
 	}
 
@@ -24,18 +24,19 @@ class App extends Component {
 		this.setState({
 			searchField: event.target.value
 		});
+
 		axios.get(`https://superheroapi.com/api/10212892996840054/search/${searchField}`)
 			.then(res => {		
-				const someData = res.data.results;
+				const results = res.data.results;
 				this.setState({
-					dataP: someData
+					resultsData: results
 				});
 			})
 	}
 
 	render() {
-		const {dataP, searchField} = this.state;
-		const filteredResults = dataP.filter(hero => {
+		const {resultsData, searchField} = this.state;
+		const filteredResults = resultsData.filter(hero => {
 			return hero.name.toLowerCase().includes(searchField.toLowerCase());
 		})
 
