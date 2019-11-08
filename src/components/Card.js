@@ -19,7 +19,6 @@ const Card = ({title, image, fullName, placeOfBirth, universe, firstAppearance})
           </div>
           </div>
         </div>
-
 	)
 }
 

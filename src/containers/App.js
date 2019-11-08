@@ -5,6 +5,7 @@ import './App.css';
 import Header from '../components/Header';
 import SearchBox from '../components/SearchBox'
 import CardList from '../components/CardList';
+import Footer from '../components/Footer';
 
 class App extends Component {
 	constructor() {
@@ -45,6 +46,7 @@ class App extends Component {
 				<Header />
 				<SearchBox searchChange={this.onSearch}/>
 				<CardList data={filteredResults}/>
+				<Footer />
 			</Fragment>
 		);
 	}
