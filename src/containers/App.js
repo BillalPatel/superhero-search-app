@@ -1,55 +1,38 @@
-import React, { Component, Fragment } from 'react';
+import React, { useState, Component } from 'react';
 import axios from 'axios';
 
-import './App.css';
 import Header from '../components/Header';
 import SearchBox from '../components/SearchBox'
 import CardList from '../components/CardList';
 import Footer from '../components/Footer';
+import './App.css';
 
-class App extends Component {
-	constructor() {
-		super();
-		this.state = {
-			resultsData: [],
-			searchField: 'Batman'
-		};
-	}
+const App = () => {
+	const [resultsData, setResultsData] = useState([]);
+	const [searchField, setSearchField] = useState('Batman');
 
-	componentDidMount() {
-		
-	}
+	const onSearch = async (event) => {
+		setSearchField(event.target.value);
 
-	onSearch = (event) => {
-		const {searchField} = this.state;
-		this.setState({
-			searchField: event.target.value
-		});
-
-		axios.get(`https://superheroapi.com/api/10212892996840054/search/${searchField}`)
+		await axios.get(`https://superheroapi.com/api/10212892996840054/search/${searchField}`)
 			.then(res => {		
 				const results = res.data.results;
-				this.setState({
-					resultsData: results
-				});
+				setResultsData(results);
 			})
-	}
+	};
 
-	render() {
-		const {resultsData, searchField} = this.state;
-		const filteredResults = resultsData.filter(hero => {
-			return hero.name.toLowerCase().includes(searchField.toLowerCase());
-		})
+	const filteredResults = resultsData.filter(hero => {
+		return hero.name.toLowerCase().includes(searchField.toLowerCase());
+	})
 
-		return (
-			<Fragment>
-				<Header />
-				<SearchBox searchChange={this.onSearch}/>
-				<CardList data={filteredResults}/>
-				<Footer />
-			</Fragment>
-		);
-	}
-}
+	return (
+		<>
+			<Header />
+			<SearchBox searchChange={onSearch}/>
+			<CardList data={filteredResults}/>
+			<Footer />
+		</>
+	);
+};
 
 export default App;
