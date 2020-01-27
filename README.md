@@ -1,4 +1,4 @@
-### React Search App
+## React Search App
 
 Basic ReactJS app that returns various data for your favourite superhero.
 
