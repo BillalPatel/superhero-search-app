@@ -9,12 +9,13 @@ import './App.css';
 
 const App = () => {
   const [resultsData, setResultsData] = useState([]);
-  const [searchField, setSearchField] = useState('Batman');
+  const [searchField, setSearchField] = useState('');
 
   const onSearch = async (event) => {
-	setSearchField(event.target.value);
+	const superheroName = event.target.value;
+	setSearchField(superheroName);
 
-	await axios.get(`https://superheroapi.com/api/10212892996840054/search/${searchField}`)
+	await axios.get(`https://superheroapi.com/api/10212892996840054/search/${superheroName}`)
 	  .then(res => {		
 		const results = res.data.results;
 		setResultsData(results);
