@@ -12,27 +12,27 @@ const App = () => {
   const [searchField, setSearchField] = useState('');
 
   const onSearch = async (event) => {
-	const superheroName = event.target.value;
-	setSearchField(superheroName);
+    const superheroName = event.target.value;
+    setSearchField(superheroName);
 
-	await axios.get(`https://superheroapi.com/api/10212892996840054/search/${superheroName}`)
-	  .then(res => {		
-		const results = res.data.results;
-		setResultsData(results);
-	  });
-  };
+    await axios.get(`https://superheroapi.com/api/10212892996840054/search/${superheroName}`)
+      .then(res => {		
+	const results = res.data.results;
+	  setResultsData(results);
+      });
+   };
 
   const filteredResults = resultsData.filter(hero => {
-	return hero.name.toLowerCase().includes(searchField.toLowerCase());
+    return hero.name.toLowerCase().includes(searchField.toLowerCase());
   });
 
   return (
-	<>
-	  <Header />
-	  <SearchBox searchChange={onSearch}/>
-	  <CardList data={filteredResults}/>
-	  <Footer />
-	</>
+    <>
+      <Header />
+        <SearchBox searchChange={onSearch}/>
+	<CardList data={filteredResults}/>
+	<Footer />
+    </>
   )
 };
 
