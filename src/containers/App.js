@@ -1,36 +1,42 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React from 'react';
+// import React, { useState } from 'react';
+// import axios from 'axios';
 
 import Header from '../components/Header';
-import SearchBox from '../components/SearchBox'
-import CardList from '../components/CardList';
+// import SearchBox from '../components/SearchBox'
+import SuperheroSearch from '../components/SuperheroSearch'
+// import CardList from '../components/CardList';
 import Footer from '../components/Footer';
 import './App.css';
 
 const App = () => {
-  const [resultsData, setResultsData] = useState([]);
-  const [searchField, setSearchField] = useState('');
+//   const [resultsData, setResultsData] = useState([]);
+//   const [searchField, setSearchField] = useState('');
 
-  const onSearch = async (event) => {
-	const superheroName = event.target.value;
-	setSearchField(superheroName);
+//   const onSearch = async (event) => {
+// 	event.preventDefault();
 
-	await axios.get(`https://superheroapi.com/api/10212892996840054/search/${superheroName}`)
-	  .then(res => {		
-		const results = res.data.results;
-		setResultsData(results);
-	  });
-  };
+// 	const superheroName = event.target.value;
+// 	setSearchField(superheroName);
 
-  const filteredResults = resultsData.filter(hero => {
-	return hero.name.toLowerCase().includes(searchField.toLowerCase());
-  });
+// 	await axios.get(`https://superheroapi.com/api/10212892996840054/search/${superheroName}`)
+// 	  .then(res => {		
+// 		const results = res.data.results;
+// 		setResultsData(results);
+// 	  });
+//   };
+
+//   const filteredResults = resultsData.filter(hero => {
+// 	return hero.name.toLowerCase().includes(searchField.toLowerCase());
+//   });
 
   return (
 	<>
 	  <Header />
-	  <SearchBox searchChange={onSearch}/>
-	  <CardList data={filteredResults}/>
+	  {/* <SearchBox searchChange={onSearch}/> */}
+	  {/* <SuperheroSearch searchChange={onSearch}/> */}
+	  <SuperheroSearch />
+	  {/* <CardList data={filteredResults}/> */}
 	  <Footer />
 	</>
   )
