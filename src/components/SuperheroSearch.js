@@ -8,7 +8,6 @@ const SuperheroSearch = () => {
   const [searchField, setSearchField] = useState('');
   
   const handleChange = (event) => {
-	// event.preventDefault();
 	setSearchField(event.target.value);
   };
 
@@ -16,7 +15,6 @@ const SuperheroSearch = () => {
 	event.preventDefault();
 
 	const superheroName = searchField;
-	// setSearchField(superheroName);
 
 	await axios.get(`https://superheroapi.com/api/10212892996840054/search/${superheroName}`)
 	  .then(res => {		
