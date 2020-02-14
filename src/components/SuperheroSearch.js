@@ -28,8 +28,7 @@ const SuperheroSearch = () => {
 		  setResultsData(results);
 		}
 	  });
-	}
-//   };
+  }
 
   const filteredResults = resultsData.filter(hero => {
 	return hero.name.toLowerCase().includes(searchField.toLowerCase());
