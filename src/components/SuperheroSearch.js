@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 import CardList from '../components/CardList';
+import ErrorMessage from '../components/ErrorMessage';
 
 const SuperheroSearch = () => {
   const [resultsData, setResultsData] = useState([]);
   const [searchField, setSearchField] = useState('');
+  const [searchError, setSearchError] = useState(false);
   
   const handleChange = (event) => {
 	setSearchField(event.target.value);
@@ -15,13 +17,19 @@ const SuperheroSearch = () => {
 	event.preventDefault();
 
 	const superheroName = searchField;
+	setSearchError(false);
 
 	await axios.get(`https://superheroapi.com/api/10212892996840054/search/${superheroName}`)
 	  .then(res => {		
 		const results = res.data.results;
-		setResultsData(results);
+		if (results === undefined) {
+		  setSearchError(true);
+		} else {
+		  setResultsData(results);
+		}
 	  });
-  };
+	}
+//   };
 
   const filteredResults = resultsData.filter(hero => {
 	return hero.name.toLowerCase().includes(searchField.toLowerCase());
@@ -44,7 +52,10 @@ const SuperheroSearch = () => {
 		  </button>
 		</form>
 	  </div>
-	  <CardList data={filteredResults}/>	
+	  {!searchError ?
+	  	<CardList data={filteredResults}/>
+		: <ErrorMessage />
+	  }
 	</div>
   )
 };
