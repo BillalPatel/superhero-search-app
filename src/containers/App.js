@@ -8,8 +8,8 @@ import './App.css';
 const App = () => (
   <>
     <Header />
-	<SuperheroSearch />
-	<Footer />
+	  <SuperheroSearch />
+	  <Footer />
   </>
 );
 
