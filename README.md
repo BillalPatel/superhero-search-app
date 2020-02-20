@@ -7,4 +7,6 @@ yarn
 yarn run dev
 ```
 
+![](README_GIF.gif)
+
 #### Data sourced from: http://superheroapi.com/
