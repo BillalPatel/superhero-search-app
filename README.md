@@ -1,6 +1,6 @@
 ## Superhero Search App
 
-Basic ReactJS application that returns various data for your favourite superhero.
+Basic ReactJS application that returns some cool facts about your favourite superhero.
 
 ```bash
 yarn
